@@ -61,7 +61,7 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
-    const reply = data.content?.map(b => b.text || "").join("") || "Something went wrong. Try again.";
+    const reply = data.content?.map(b => b.text || "").join("") || JSON.stringify(data);
     return res.status(200).json({ reply });
   } catch (err) {
     return res.status(500).json({ reply: "Something went wrong. Try again." });
