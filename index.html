@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+      <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -132,7 +133,12 @@
       </div>
       <div class="divider"></div>
       <p class="welcome-desc">Describe what you're dealing with. Be specific. You'll get a direct response grounded in the principles from <em>One Decision</em> — not generic advice.</p>
-      <div class="starters" id="starters"></div>
+      <div class="starters" id="starters">
+        <button class="starter-btn">"I have a team member who's underperforming but I keep avoiding the conversation."</button>
+        <button class="starter-btn">"I'm doing everything myself because I don't trust my team to do it right."</button>
+        <button class="starter-btn">"My team doesn't seem bought in to the direction I've set."</button>
+        <button class="starter-btn">"I feel like I'm managing instead of leading but I don't know how to change it."</button>
+      </div>
     </div>
     <div id="typing">
       <div class="msg-label">ONE DECISION GUIDE</div>
@@ -174,12 +180,8 @@
     let messages = [];
     let loading  = false;
 
-    STARTERS.forEach(text => {
-      const btn = document.createElement('button');
-      btn.className = 'starter-btn';
-      btn.textContent = `"${text}"`;
-      btn.addEventListener('click', () => sendMessage(text));
-      document.getElementById('starters').appendChild(btn);
+    document.querySelectorAll('.starter-btn').forEach(btn => {
+      btn.addEventListener('click', () => sendMessage(btn.textContent.replace(/^"|"$/g, '')));
     });
 
     input.addEventListener('input', () => {
