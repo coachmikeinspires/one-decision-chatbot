@@ -31,7 +31,7 @@ NEVER:
 - Give generic advice that could apply to anyone
 Always be direct. Always be real. Always push them toward action.`;
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
