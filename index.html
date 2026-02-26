@@ -158,10 +158,10 @@
         </svg>
       </button>
     </div>
-    <div class="footer-note">Powered by <em>One Decision</em> · For deeper work — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c1f333d3f341135373915322f2c352e392f1c3b313d3530723f3331">[email&#160;protected]</a> · 916.230.0278</div>
+    <div class="footer-note">Powered by <em>One Decision</em> · For deeper work — CoachMikeInspires@gmail.com · 916.230.0278</div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     const STARTERS = [
       "I have a team member who's underperforming but I keep avoiding the conversation.",
       "I'm doing everything myself because I don't trust my team to do it right.",
@@ -246,6 +246,17 @@
         messages.push({ role: 'assistant', content: reply });
         typing.style.display = 'none';
         appendMessage('assistant', reply);
-      } catch {
+      } catch (err) {
+        typing.style.display = 'none';
+        appendMessage('assistant', 'Something went wrong. Try again.');
+      } finally {
+        loading = false;
+        sendBtn.disabled = !input.value.trim();
+      }
+    }
+  </script>
+</body>
+</html>
+
       
       
