@@ -69,6 +69,9 @@
     }
     .msg-label { font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 2px; color: rgba(194,154,108,0.6); margin-bottom: 8px; }
     .msg-text { color: #f0f0f0; font-size: 16.5px; line-height: 1.8; white-space: pre-wrap; max-width: 94%; }
+    .msg-followup { margin-top: 14px; max-width: 94%; }
+    .msg-followup-line1 { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: rgba(194,154,108,0.8); }
+    .msg-followup-line2 { font-size: 12px; letter-spacing: 1px; color: rgba(194,154,108,0.45); margin-top: 3px; text-transform: uppercase; }
 
     #typing { display: none; flex-direction: column; align-items: flex-start; }
     .dots-wrap {
@@ -150,10 +153,10 @@
         </svg>
       </button>
     </div>
-    <div class="footer-note">Powered by <em>One Decision</em> · For deeper work — CoachMikeInspires@gmail.com · 916.230.0278</div>
+    <div class="footer-note">Powered by <em>One Decision</em> · For deeper work — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c1f333d3f341135373915322f2c352e392f1c3b313d3530723f3331">[email&#160;protected]</a> · 916.230.0278</div>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const STARTERS = [
       "I have a team member who's underperforming but I keep avoiding the conversation.",
       "I'm doing everything myself because I don't trust my team to do it right.",
@@ -208,8 +211,12 @@
         const text = document.createElement('div');
         text.className = 'msg-text';
         text.textContent = content;
+        const followup = document.createElement('div');
+        followup.className = 'msg-followup';
+        followup.innerHTML = '<div class="msg-followup-line1">What other priority situation needs attention?</div><div class="msg-followup-line2">Enter below.</div>';
         row.appendChild(label);
         row.appendChild(text);
+        row.appendChild(followup);
       }
       chatArea.insertBefore(row, typing);
       scrollToBottom();
@@ -239,13 +246,4 @@
         typing.style.display = 'none';
         appendMessage('assistant', reply);
       } catch {
-        typing.style.display = 'none';
-        appendMessage('assistant', 'Something went wrong. Try again.');
-      } finally {
-        loading = false;
-        sendBtn.disabled = !input.value.trim();
-      }
-    }
-  </script>
-</body>
-</html>
+      
